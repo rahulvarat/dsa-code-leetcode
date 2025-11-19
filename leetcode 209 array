@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int minSubArrayLen(int k, vector<int>& arr) {
+        int low=0;
+        int high=0;
+        int result=INT_MAX;
+        int sum=0;
+        int len=high-low+1;
+        for(int high=0;high<arr.size();high++){
+            sum=sum+arr[high];
+            while(sum>=k){
+                len=high-low+1;
+            result=min(result,len);
+                sum=sum-arr[low];
+                low++;
+            }
+           
+        }
+        if(result==INT_MAX){
+            return 0;
+        }
+        return result;
+        
+    }
+}; 
