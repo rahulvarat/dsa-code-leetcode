@@ -1,0 +1,30 @@
+class Solution {
+public:
+      bool candi(vector<int>&arr,int mid,long long k){
+            long long count=0;
+            for(int i=0;i<arr.size();i++){
+                count=count+(arr[i]/mid);
+                
+            }
+            return count>=k;
+          
+
+        }
+     int maximumCandies(vector<int>&arr, long long k) {
+        int low=1;
+        int result=0;
+        int high=*max_element(arr.begin(),arr.end());
+        while(low<=high){
+            int mid=(low+high)/2;
+            if(candi(arr,mid,k)){
+                result=mid;
+                low=mid+1;
+            }else{
+                high=mid-1;
+            }
+        }
+        return result;
+       
+        
+    }
+};
