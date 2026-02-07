@@ -1,0 +1,41 @@
+class Solution {
+public:
+       
+       int fun(vector<vector<int>>&arr,int mid,int n,int m){
+        int row=n-1;
+        int col=0;
+        int count=0;
+        while(row>=0&&col<m){
+            if(arr[row][col]<=mid){
+                count=count+row+1;
+                col++;
+
+            }else{
+                row--;
+            }
+
+        }
+        return count;
+       }
+    int kthSmallest(vector<vector<int>>& arr, int k) {
+        int n=arr.size();
+        int m=arr[0].size();
+        int result=-1;
+        int low=arr[0][0];
+        int high=arr[n-1][m-1];
+        while(low<=high){
+            int mid=(low+high)/2;
+            int count=fun(arr,mid,n,m);
+            if(count<k){
+                 low=mid+1;
+              
+            }else{
+               
+                  result=mid;
+                high=mid-1;
+            }
+        }
+        return result;
+        
+    }
+};
