@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    int kthSmallest(vector<int> &arr, int k) {
+        priority_queue<int>pq;  //this use for only kth smallest
+        int i=0;
+        for( i=0;i<k;i++){
+            pq.push(arr[i]);
+        }
+        for(i=k;i<arr.size();i++){
+            if(arr[i]>=pq.top()){
+                continue;
+            }else{
+                pq.pop();
+                pq.push(arr[i]);
+            }
+        }
+        return pq.top();
+        
+        // code here
+        
+    }
+};
