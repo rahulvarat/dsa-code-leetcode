@@ -1,0 +1,20 @@
+class Solution {
+  public:
+    bool isSorted(vector<int>& arr,int low) {
+        // code here
+       
+        if(low>=arr.size()-1){
+            return true;
+        }
+        if(arr[low]>arr[low+1]){
+            return false;
+        }
+        return isSorted(arr,low+1);
+        
+     
+        
+    }
+        bool isSorted(vector<int>& arr){
+        return isSorted(arr,0);
+    }
+};
